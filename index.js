@@ -1,7 +1,28 @@
 var express = require('express');
-var router = express.Router();
-const User = require('../models/User');
 const axios = require("axios");
+const User = require('./models/User');
+var cors = require('cors')
+var app = express();
+const db = require('./helpers/db');
+const port = 5000;
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
+
+app.options('*', cors())
+
+
+
+/* GET home page. */
+app.get('/', async function(req, res, next) {
+  const users = await User.find();
+  res.render('index', { users : users} )
+});
 
 
 const getFakeData =  async () => {
@@ -28,7 +49,7 @@ const getFakeData =  async () => {
 
 
 /* GET users listing. */
-router.post('/add', async function(req, res, next) {
+app.post('/user/add', async function(req, res, next) {
   const { username , password } = req.body;
   const fakeData = await getFakeData();
   try {
@@ -52,7 +73,7 @@ router.post('/add', async function(req, res, next) {
 
 
 /* GET users listing. */
-router.post('/login', async function(req, res, next) {
+app.post('/user/login', async function(req, res, next) {
   const { username , password } = req.body;
   try {
     let user = await User.findOne({ username, password });
@@ -65,4 +86,4 @@ router.post('/login', async function(req, res, next) {
 });
 
 
-module.exports = router;
+
