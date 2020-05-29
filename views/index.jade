@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title Demo User Management
+    link(href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css', rel='stylesheet')
+  body(class='flex flex-col')
+    .flex.flex-col.justify-center(class='')
+      table.table-auto
+        thead
+          tr
+            th.px-4.py-2 Customer ID
+            th.px-4.py-2 Username
+            th.px-4.py-2 Password
+            th.px-4.py-2 Name
+            th.px-4.py-2 Email
+            th.px-4.py-2 Phone
+            th.px-4.py-2 Picture
+            th.px-4.py-2 Gender
+            th.px-4.py-2 Byear
+        tbody
+          each item in users
+            tr.bg-gray-100
+              td.border.px-4.py-2 #{item.customerID}
+              td.border.px-4.py-2 #{item.username}
+              td.border.px-4.py-2 #{item.password}
+              td.border.px-4.py-2 #{item.name}
+              td.border.px-4.py-2 #{item.email}
+              td.border.px-4.py-2 #{item.phone}
+              td.border.px-4.py-2 #{item.picture}
+              td.border.px-4.py-2 #{item.gender}
+              td.border.px-4.py-2 #{item.byear}
+    .flex.flex-col.justify-center(class='w-1/4')
+      form(action='/user/add', method='post')
+        label.mt-3(for='username') Enter name: 
+        input.bg-white.border.border-gray-300.rounded-lg.py-2.px-4.block.w-full.appearance-none.leading-normal(class='focus:outline-none focus:shadow-outline', type='text', name='username', placeholder='user id')
+        label.mt-3(for='username') Enter name: 
+        input.bg-white.border.border-gray-300.rounded-lg.py-2.px-4.block.w-full.appearance-none.leading-normal(class='focus:outline-none focus:shadow-outline', type='password', name='password', placeholder='user id')
+        button.bg-blue-500.text-white.font-bold.mt-3.py-2.px-4.rounded(class='hover:bg-blue-700', type='submit')
+          | Save
