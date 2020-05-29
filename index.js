@@ -4,15 +4,17 @@ const User = require('./models/User');
 var cors = require('cors')
 var app = express();
 const db = require('./helpers/db');
+var path = require ('path');
 const port = 5000;
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
 
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.app.use(express.static(path.join(__dirname, 'public')));
+(__dirname + '/public'));
 
 app.options('*', cors())
 
@@ -61,7 +63,6 @@ app.post('/user/add', async function(req, res, next) {
     const users = await User.find();
     res.redirect("/")
   } catch (err) {
-    console.log('err' + err);
     res.render('index', { users : users} )
     const users = await User.find();
     res.redirect("/")
