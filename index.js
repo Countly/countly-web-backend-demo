@@ -37,6 +37,8 @@ const getFakeData =  async () => {
     data = data.results[0];
     fakeData.name = data.name.first + ' ' + data.name.last,
     fakeData.email = data.email;
+    fakeData.hasLoan = Math.random() >= 0.5;
+    fakeData.hasCreditCard = Math.random() >= 0.5;
     fakeData.phone = '+3' + Math.floor(Math.random() * 100000000);
     fakeData.picture = data.picture.large;
     fakeData.gender = data.gender;

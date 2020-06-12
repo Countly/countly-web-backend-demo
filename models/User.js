@@ -11,8 +11,8 @@ const User = new Schema({
   picture: String,
   gender: String,
   byear: Number,
-  hasLoan: Math.random() >= 0.5,
-  hasCreditCard: Math.random() >= 0.5
+  hasLoan: Boolean,
+  hasCreditCard: Boolean
 });
 
 module.exports = mongoose.model('User',User);
