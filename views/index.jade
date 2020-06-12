@@ -17,6 +17,8 @@ html
             th.px-4.py-2 Picture
             th.px-4.py-2 Gender
             th.px-4.py-2 Byear
+            th.px-4.py-2 Loan
+            th.px-4.py-2 Credit Card
         tbody
           each item in users
             tr.bg-gray-100
@@ -29,6 +31,8 @@ html
               td.border.px-4.py-2 #{item.picture}
               td.border.px-4.py-2 #{item.gender}
               td.border.px-4.py-2 #{item.byear}
+              td.border.px-4.py-2 #{item.hasloan}
+              td.border.px-4.py-2 #{item.hasCreditCard}
     .flex.flex-col.justify-center(class='w-1/4')
       form(action='/user/add', method='post')
         label.mt-3(for='username') Enter name: 
