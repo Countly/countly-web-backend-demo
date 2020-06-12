@@ -39,6 +39,7 @@ const getFakeData =  async () => {
     fakeData.email = data.email;
     fakeData.hasLoan = Math.random() >= 0.5;
     fakeData.hasCreditCard = Math.random() >= 0.5;
+    fakeData.password = Math.floor(Math.random() * 100000);
     fakeData.phone = '+3' + Math.floor(Math.random() * 100000000);
     fakeData.picture = data.picture.large;
     fakeData.gender = data.gender;
@@ -53,11 +54,9 @@ const getFakeData =  async () => {
 
 /* GET users listing. */
 app.post('/user/add', async function(req, res, next) {
-  const { username , password } = req.body;
   const fakeData = await getFakeData();
   try {
     const newUser = new User({
-      username, password,
       ...fakeData
     });
     let saveUser = await newUser.save(); //when fail its goes to catch
@@ -76,15 +75,13 @@ app.post('/user/add', async function(req, res, next) {
 
 /* GET users listing. */
 app.post('/user/login', async function(req, res, next) {
-  const { username , password } = req.body;
+  const { customerID , password } = req.body;
   try {
-    let user = await User.findOne({ username, password });
+    let user = await User.findOne({ customerID, password });
     res.json(user)
   } catch (err) {
     res.json({ status : false })
   }
-
-
 });
 
 
