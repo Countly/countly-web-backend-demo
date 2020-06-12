@@ -10,7 +10,9 @@ const User = new Schema({
   phone: String,
   picture: String,
   gender: String,
-  byear: Number
+  byear: Number,
+  hasLoan: Math.random() >= 0.5,
+  hasCreditCard: Math.random() >= 0.5
 });
 
 module.exports = mongoose.model('User',User);
