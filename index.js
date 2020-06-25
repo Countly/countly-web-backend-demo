@@ -22,6 +22,7 @@ app.options('*', cors())
 /* GET home page. */
 app.get('/', async function(req, res, next) {
   const users = await User.find();
+  console.log(users)
   res.render('index', { users : users} )
 });
 
@@ -44,6 +45,13 @@ const getFakeData =  async () => {
     fakeData.picture = data.picture.large;
     fakeData.gender = data.gender;
     fakeData.byear = 1980 + Math.floor(Math.random() * 10);
+    fakeData.hasInvestment = Math.random() >= 0.5;
+    fakeData.hasActiveInternetBanking = Math.random() >= 0.5;
+    fakeData.hasActiveMobileBanking = Math.random() >= 0.5;
+    fakeData.wrCashWithdrawSuccess = Math.floor(Math.random() * 100);
+    fakeData.wrCashWithdrawUnsuccessful = Math.floor(Math.random() * 10);
+    fakeData.wrCashWithdrawAttempt = fakeData.wrCashWithdrawUnsuccessful + fakeData.wrCashWithdrawSuccess;
+    fakeData.QR = Math.random() >= 0.5;
   } catch (error) {
     console.log(error);
   }

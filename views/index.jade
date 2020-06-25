@@ -18,6 +18,13 @@ html
             th.px-4.py-2 Byear
             th.px-4.py-2 Loan
             th.px-4.py-2 Credit Card
+            th.px-4.py-2 hasInvestment
+            th.px-4.py-2 hasActiveInternetBanking
+            th.px-4.py-2 hasActiveMobileBanking
+            th.px-4.py-2 wrCashWithdrawAttempt
+            th.px-4.py-2 wrCashWithdrawSuccess
+            th.px-4.py-2 wrCashWithdrawUnsuccessful
+            th.px-4.py-2 QR
         tbody
           each item in users
             tr.bg-gray-100
@@ -31,6 +38,13 @@ html
               td.border.px-4.py-2 #{item.byear}
               td.border.px-4.py-2 #{item.hasLoan}
               td.border.px-4.py-2 #{item.hasCreditCard}
+              td.border.px-4.py-2 #{item.hasInvestment}
+              td.border.px-4.py-2 #{item.hasActiveInternetBanking}
+              td.border.px-4.py-2 #{item.hasActiveMobileBanking}
+              td.border.px-4.py-2 #{item.wrCashWithdrawAttempt}
+              td.border.px-4.py-2 #{item.wrCashWithdrawSuccess}
+              td.border.px-4.py-2 #{item.wrCashWithdrawUnsuccessful}
+              td.border.px-4.py-2 #{item.QR}
     .flex.flex-col.justify-center(class='w-1/4')
       form(action='/user/add', method='post')
         button.bg-blue-500.w-full.text-white.font-bold.mt-3.py-2.px-4.rounded(class='hover:bg-blue-700', type='submit')

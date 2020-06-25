@@ -11,7 +11,14 @@ const User = new Schema({
   gender: String,
   byear: Number,
   hasLoan: Boolean,
-  hasCreditCard: Boolean
+  hasCreditCard: Boolean,
+  hasInvestment: Boolean,
+  hasActiveInternetBanking: Boolean,
+  hasActiveMobileBanking: Boolean,
+  wrCashWithdrawAttempt: Number,
+  wrCashWithdrawSuccess: Number,
+  wrCashWithdrawUnsuccessful: Number,
+  QR: Boolean
 });
 
 module.exports = mongoose.model('User',User);
